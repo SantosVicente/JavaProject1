@@ -1,0 +1,111 @@
+package br.com.vicente.treino;
+
+import java.util.Scanner;
+
+public class Treino {
+
+    public static void main(String[] args) {
+        Scanner leitura = new Scanner(System.in);
+
+        double valor_gasto;
+        double pontuacao_por_real;
+        double pontos_acumulados;
+        double bonificacao;
+        double valor_bonificado;
+        double valor_milheiro;
+        double retorno;
+        double valor_real_gasto;
+
+        String continuar;
+
+        int salvar;
+
+        int menu;
+
+        do {
+            System.out.println("\n\n\n~BEM VINDO AO MENU~");
+            System.out.println(" 1 - SIMULACAO");
+            System.out.println(" 2 - VISUALIZAR");
+            System.out.println(" 3 - SAIR");
+            System.out.println("Digite a opção desejada: ");
+
+            menu = leitura.nextInt();
+
+            if (menu == 1) {
+                System.out.println("\n ~ Voce esta na area de simulacao!\n");
+
+                System.out.print("Digite o valor gasto (R$): ");
+                valor_gasto = leitura.nextDouble();
+
+                System.out.print("\nDigite a pontuacao para cada real: ");
+                pontuacao_por_real = leitura.nextDouble();
+
+                System.out.print("\nDigite a sua bonificacao (ex: 0.3 == 30%) : ");
+                bonificacao = leitura.nextDouble();
+
+                while (bonificacao < 0.2 || bonificacao > 1.3) {
+                    System.out.print("\nDigite um valor valido (entre 0.2 e 1.3): ");
+                    bonificacao = leitura.nextDouble();
+                }
+
+                System.out.print("\nDigite o valor do milheiro: ");
+                valor_milheiro = leitura.nextDouble();
+
+                while (valor_milheiro < 17 || valor_milheiro > 29) {
+                    System.out.print("\nDigite um valor valido (entre 17 e 29): ");
+                    valor_milheiro = leitura.nextDouble();
+                }
+
+                pontos_acumulados = valor_gasto * pontuacao_por_real;
+                valor_bonificado = pontos_acumulados + (pontos_acumulados * bonificacao);
+                retorno = (valor_bonificado / 1000) * valor_milheiro;
+                valor_real_gasto = valor_gasto - retorno;
+
+                System.out.println("\nValor gasto: R$ " + valor_gasto);
+                System.out.println("Pontuacao por real: " + pontuacao_por_real);
+                System.out.println("Bonificacao: " + bonificacao);
+                System.out.println("Valor do milheiro para venda: R$ " + valor_milheiro);
+                System.out.println("Retorno: R$ " + retorno);
+                System.out.println("Valor real gasto: R$ " + valor_real_gasto);
+
+                System.out.print("\nDeseja salvar estes dados ? (1 para sim /0 para não): ");
+                salvar = leitura.nextInt();
+
+                while (salvar != 1 && salvar != 0) {
+
+                    System.out.print("Digite um valor valido (1 para sim /0 para não): ");
+                    salvar = leitura.nextInt();
+                }
+
+                if (salvar == 1) {
+                    //salvar dado no arquivo
+                    System.out.println("Essa opção ainda não está pronta para ser ultilizada!\n");
+                    System.out.print("Digite algum texto aleatório para continuar. . .  ");
+                    continuar = leitura.next();
+
+                }
+
+            }
+
+            if (menu == 2) {
+                System.out.println("\n~VOCÊ ESTÁ NA ÁREA DE VISUALIZAÇÃO~\n");
+
+                System.out.println("Essa opção ainda não está pronta para ser ultilizada!\n");
+                System.out.print("Digite algum texto aleatório para continuar. . .  ");
+                continuar = leitura.next();
+            }
+
+            if (menu != 1 && menu != 2 && menu != 3) {
+                System.out.println("\nA opção digitada não existe!");
+                System.out.print("Digite algum texto aleatório para continuar. . .  ");
+                continuar = leitura.next();
+            }
+
+        } while (menu != 3);
+
+        System.out.println("\n\n\nObrigado por usar o programa!");
+        System.out.println("Programa finalizado. . .");
+
+        leitura.close();
+    }
+}
