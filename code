@@ -84,7 +84,6 @@ public class Treino {
                     continuar = leitura.next();
 
                 }
-
             }
 
             if (menu == 2) {
